@@ -9,18 +9,21 @@ public class Place {
 
     private final int y;
 
+    private final int position;
+
     private Tile tile;
 
     private Board board;
 
-    public Place(int x, int y, Board board) {
+    public Place(int x, int y, int position, Board board) {
         this.x = x;
         this.y = y;
+        this.position = position;
         this.board = board;
     }
 
-    public Place(int x, int y, int number, Board board) {
-        this(x, y, board);
+    public Place(int x, int y, int number, int position, Board board) {
+        this(x, y, position, board);
         tile = new Tile(number);
     }
 
@@ -30,6 +33,10 @@ public class Place {
 
     public int getY() {
         return y;
+    }
+
+    public int getPos() {
+        return position;
     }
 
     public boolean hasTile() {
@@ -52,8 +59,5 @@ public class Place {
     public boolean slidable() {
     	return hasTile() && board.slidable(this);
     }
-    
-    public void slide() {
-    	board.slide(getTile());
-    }
+
 }

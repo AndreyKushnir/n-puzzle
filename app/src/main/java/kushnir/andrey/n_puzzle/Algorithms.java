@@ -62,17 +62,8 @@ public class Algorithms {
 
     static private String convertToString(List<Place> places, int boardSize) {
         StringBuilder sb = new StringBuilder(FIN.length());
-        sb.append(FIN);
-        Tile tile;
-
-        for (Place place : places) {
-            int x = place.getX();
-            int y = place.getY();
-            if (place.hasTile()) {
-                int number = place.getTile().number();
-                sb.setCharAt((y - 1) * boardSize + x - 1,
-                        Character.forDigit(number, 10));
-            } else sb.setCharAt((y - 1) * boardSize + x - 1, '#');
+        for (Place p: places) {
+            sb.append(p.getTile().number());
         }
         return sb.toString();
     }

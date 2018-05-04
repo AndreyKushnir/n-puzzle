@@ -51,7 +51,7 @@ public class BoardView extends View {
 		int ix = (int) (x / width);
 		int iy = (int) (y / height);
 
-		return board.placeAt(ix + 1, iy + 1);
+		return board.getPlaces().get(iy * board.getSize() + ix);
 	}
 
 	/*
@@ -65,7 +65,7 @@ public class BoardView extends View {
 			return super.onTouchEvent(event);
 		Place p = locatePlace(event.getX(), event.getY());
 		if (p != null && p.slidable() && !board.solved()) {
-			p.slide();
+			board.slide(p);
 			invalidate();
 		}
 		return true;
